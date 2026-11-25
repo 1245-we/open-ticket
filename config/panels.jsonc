@@ -1,57 +1,73 @@
-/*
- * OPEN TICKET PANELS
- * ----------------------------------------------
- * Create customizable panel messages with buttons or a dropdown.
- * Add up to 25 options to this panel from (config/options.jsonc)
- * Panels can be customised with text, images, colors and more.
- * 
- * Spawn the panel in Discord using: /panel <id>
- * 
- * TIP: Create new panels by copying everything between and including the {...} brackets of an panel. Paste it after the last panel and make sure that they are seperated by a comma.
- */
+
 [
-    {
-        /* A panel is creates a message with up to 25 options as buttons or dropdown. */
-        "id":"example-panel",
-        "name":"Example Panel",
-        "dropdown":false,
-        
-        /* Add up to 5 option IDs from (config/options.jsonc). */
-        "options":["example-ticket","example-website","example-role"],
-        
-        "text":"", //Leave empty to disable
-        "embed":{
-            "enabled":true,
-            "title":"Tickets:", //Leave empty to disable
-            "description":"Create a ticket by selecting one of the options below. Once selected, a private ticket will be created for you and our support team will be able to assist you directly.", //Leave empty to disable
-            
-            "customColor":"#f8ab00", //Leave empty to use default color
-            "url":"", //URL. Leave empty to disable
-            
-            "image":"", //Image URL. Leave empty to disable
-            "thumbnail":"", //Image URL. Leave empty to disable
-            
-            "footer":"Open Ticket v4.2.3", //Leave empty to disable
-            /* Embed fields. Set to empty list [] to disable. */
-            "fields":[
-                {"name":"Field name","value":"Field value","inline":false}
-            ],
-            "timestamp":false
-        },
-        "settings":{
-            "dropdownPlaceholder":"Create a ticket...", //Leave empty to use default.
-            "maximumButtonsPerRow":5,
-            
-            /* Display the maximum amount of tickets per user. */
-            "enableMaxTicketsWarningInText":false,
-            "enableMaxTicketsWarningInEmbed":true,
-            
-            /* Automatically generate option descriptions from (config/options.jsonc). */
-            "describeOptionsLayout":"normal", //Choices: simple, normal, detailed
-            "describeOptionsCustomTitle":"",
-            "describeOptionsInText":false,
-            "describeOptionsInEmbedFields":true,
-            "describeOptionsInEmbedDescription":false
-        }
+  {
+    "id": "mystica-principal",
+    "name": "MystiCa Support",
+    "dropdown": true,
+    "options": [
+      "soporte-general",
+      "postulaciones",
+      "reportes",
+      "alianzas"
+    ],
+    "text": "",
+    "embed": {
+      "enabled": true,
+      "title": "✦ MYSTICA SUPPORT",
+      "description": "Bienvenido al centro oficial de atención de **MystiCa**.\n\nNuestro sistema de soporte está diseñado para organizar y atender cada solicitud de manera privada, ordenada y eficiente.\n\n**Seleccioná una categoría para continuar:**\n\n🎫 Soporte general\n🏛️ Postulaciones\n🛡️ Reportes\n🤝 Alianzas\n\n━━━━━━━━━━━━━━━━━━━━\n\n*Cada solicitud será revisada por el equipo correspondiente.*",
+      "customColor": "#D4AF37",
+      "url": "",
+      "image": "",
+      "thumbnail": "",
+      "footer": "MYSTICA SUPPORT • ATENCIÓN OFICIAL",
+      "fields": [],
+      "timestamp": false
+    },
+    "settings": {
+      "dropdownPlaceholder": "Seleccioná una categoría...",
+      "maximumButtonsPerRow": 5,
+      "enableMaxTicketsWarningInText": false,
+      "enableMaxTicketsWarningInEmbed": true,
+      "describeOptionsLayout": "detailed",
+      "describeOptionsCustomTitle": "CATEGORÍAS DISPONIBLES",
+      "describeOptionsInText": false,
+      "describeOptionsInEmbedFields": true,
+      "describeOptionsInEmbedDescription": false
     }
+  },
+  {
+    "id": "mystica-postulaciones",
+    "name": "Postulaciones MystiCa",
+    "dropdown": true,
+    "options": [
+      "post-builder",
+      "post-farmer",
+      "post-guerrero",
+      "post-ascenso"
+    ],
+    "text": "",
+    "embed": {
+      "enabled": true,
+      "title": "✦ POSTULACIONES | MYSTICA",
+      "description": "¿Querés formar parte del equipo de MystiCa?\n\nContamos con distintas áreas de especialización. Seleccioná la opción que corresponda a tu perfil y completá el formulario de postulación.\n\n**ÁREAS DISPONIBLES**\n\n🏗️ Builder — Construcción y diseño.\n🌾 Farmer / Técnico — Agricultura, granjas y mecanismos.\n⚔️ Guerrero — Combate, defensa y estrategia.\n👑 Ascensos — Revisión de trayectoria y méritos.\n\n━━━━━━━━━━━━━━━━━━━━\n\n*Todas las solicitudes serán evaluadas por el equipo de liderazgo. Ningún ascenso se concede automáticamente.*",
+      "customColor": "#D4AF37",
+      "url": "",
+      "image": "",
+      "thumbnail": "",
+      "footer": "MYSTICA SUPPORT • POSTULACIONES",
+      "fields": [],
+      "timestamp": false
+    },
+    "settings": {
+      "dropdownPlaceholder": "Seleccioná un área...",
+      "maximumButtonsPerRow": 5,
+      "enableMaxTicketsWarningInText": false,
+      "enableMaxTicketsWarningInEmbed": true,
+      "describeOptionsLayout": "detailed",
+      "describeOptionsCustomTitle": "ÁREAS DE POSTULACIÓN",
+      "describeOptionsInText": false,
+      "describeOptionsInEmbedFields": true,
+      "describeOptionsInEmbedDescription": false
+    }
+  }
 ]
