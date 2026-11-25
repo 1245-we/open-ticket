@@ -1,3 +1,300 @@
+[
+  {
+    "id": "support-area",
+    "name": "Área de soporte",
+    "description": "Seleccioná el área en la que necesitás ayuda.",
+    "type": "radio-select",
+    "required": true,
+    "choices": [
+      {"title": "Problema técnico", "description": "Errores, bugs o problemas de conexión.", "selectedByDefault": false},
+      {"title": "Jugabilidad", "description": "Dudas, mecánicas o situaciones dentro del servidor.", "selectedByDefault": false},
+      {"title": "Usuario o jugador", "description": "Consultas relacionadas con otros jugadores.", "selectedByDefault": false},
+      {"title": "Otro", "description": "Una consulta que no encaja en las opciones anteriores.", "selectedByDefault": false}
+    ]
+  },
+  {
+    "id": "support-priority",
+    "name": "Prioridad",
+    "description": "Indicá qué tan urgente es tu consulta.",
+    "type": "radio-select",
+    "required": true,
+    "choices": [
+      {"title": "Baja", "description": "Consulta general sin urgencia.", "selectedByDefault": false},
+      {"title": "Media", "description": "Necesito asistencia próximamente.", "selectedByDefault": false},
+      {"title": "Alta", "description": "El problema afecta considerablemente mi experiencia.", "selectedByDefault": false}
+    ]
+  },
+  {
+    "id": "support-subject",
+    "name": "Asunto",
+    "description": "Resumí brevemente el motivo de tu ticket.",
+    "type": "short",
+    "required": true,
+    "placeholder": "¿En qué necesitás ayuda?",
+    "length": {"enabled": true, "min": 3, "max": 100}
+  },
+  {
+    "id": "support-details",
+    "name": "Descripción del problema",
+    "description": "Explicá detalladamente tu situación.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Describí qué ocurrió, cuándo y qué intentaste hacer...",
+    "length": {"enabled": true, "min": 10, "max": 1000}
+  },
+  {
+    "id": "support-evidence",
+    "name": "Evidencia",
+    "description": "Si tenés capturas, videos o enlaces, compartilos.",
+    "type": "paragraph",
+    "required": false,
+    "placeholder": "Enlaces o información adicional...",
+    "length": {"enabled": false, "min": 0, "max": 1000}
+  },
+  {
+    "id": "builder-level",
+    "name": "Nivel de construcción",
+    "description": "¿Cómo describirías tu experiencia construyendo?",
+    "type": "radio-select",
+    "required": true,
+    "choices": [
+      {"title": "Principiante", "description": "Estoy aprendiendo y practicando.", "selectedByDefault": false},
+      {"title": "Intermedio", "description": "Puedo realizar construcciones detalladas.", "selectedByDefault": false},
+      {"title": "Avanzado", "description": "Tengo experiencia en proyectos complejos.", "selectedByDefault": false},
+      {"title": "Profesional", "description": "Domino técnicas avanzadas y diseño.", "selectedByDefault": false}
+    ]
+  },
+  {
+    "id": "builder-style",
+    "name": "Especialidad de construcción",
+    "description": "Seleccioná tus estilos o especialidades principales.",
+    "type": "checkbox-select",
+    "required": true,
+    "limits": {"enabled": true, "min": 1, "max": 4},
+    "choices": [
+      {"title": "Medieval", "description": "Castillos, aldeas y estructuras medievales.", "selectedByDefault": false},
+      {"title": "Moderno", "description": "Arquitectura contemporánea.", "selectedByDefault": false},
+      {"title": "Fantástico", "description": "Construcciones imaginativas y mágicas.", "selectedByDefault": false},
+      {"title": "Terraformación", "description": "Terreno, paisajes y entornos naturales.", "selectedByDefault": false},
+      {"title": "Decoración", "description": "Interiores, detalles y ambientación.", "selectedByDefault": false},
+      {"title": "Otros", "description": "Otras especialidades.", "selectedByDefault": false}
+    ]
+  },
+  {
+    "id": "builder-tools",
+    "name": "Herramientas",
+    "description": "¿Qué herramientas o técnicas utilizás?",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "WorldEdit, Voxel, comandos, construcción manual...",
+    "length": {"enabled": true, "min": 2, "max": 500}
+  },
+  {
+    "id": "builder-portfolio",
+    "name": "Portfolio",
+    "description": "Compartí imágenes, videos o enlaces de tus construcciones.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Enlaces a tus construcciones...",
+    "length": {"enabled": true, "min": 5, "max": 1000}
+  },
+  {
+    "id": "builder-availability",
+    "name": "Disponibilidad",
+    "description": "¿Cuánto tiempo podés dedicar a construir?",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Días, horarios y tiempo aproximado...",
+    "length": {"enabled": true, "min": 2, "max": 500}
+  },
+  {
+    "id": "farmer-specialty",
+    "name": "Especialidad",
+    "description": "Seleccioná tus áreas de experiencia.",
+    "type": "checkbox-select",
+    "required": true,
+    "limits": {"enabled": true, "min": 1, "max": 5},
+    "choices": [
+      {"title": "Granjas automáticas", "description": "Diseño y mantenimiento de granjas.", "selectedByDefault": false},
+      {"title": "Redstone", "description": "Circuitos y sistemas de redstone.", "selectedByDefault": false},
+      {"title": "Técnico", "description": "Mecánicas, optimización y funcionamiento del servidor.", "selectedByDefault": false},
+      {"title": "Minería", "description": "Minería y obtención de recursos.", "selectedByDefault": false},
+      {"title": "Agricultura", "description": "Cultivos y producción de alimentos.", "selectedByDefault": false}
+    ]
+  },
+  {
+    "id": "farmer-experience",
+    "name": "Experiencia",
+    "description": "Contanos cuánto tiempo llevás realizando estas actividades.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Tu experiencia en Minecraft...",
+    "length": {"enabled": true, "min": 5, "max": 500}
+  },
+  {
+    "id": "farmer-knowledge",
+    "name": "Conocimientos técnicos",
+    "description": "Explicá qué mecánicas, sistemas o técnicas dominás.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Granjas, redstone, mecanismos, optimización...",
+    "length": {"enabled": true, "min": 5, "max": 1000}
+  },
+  {
+    "id": "farmer-projects",
+    "name": "Proyectos realizados",
+    "description": "Compartí ejemplos de granjas o sistemas que hayas creado.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Proyectos anteriores, imágenes o enlaces...",
+    "length": {"enabled": true, "min": 5, "max": 1000}
+  },
+  {
+    "id": "farmer-availability",
+    "name": "Disponibilidad",
+    "description": "Indicá cuánto tiempo podés dedicar a tu especialidad.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Horarios y disponibilidad...",
+    "length": {"enabled": true, "min": 2, "max": 500}
+  },
+  {
+    "id": "warrior-specialty",
+    "name": "Especialidad de combate",
+    "description": "Seleccioná tus especialidades.",
+    "type": "checkbox-select",
+    "required": true,
+    "limits": {"enabled": true, "min": 1, "max": 4},
+    "choices": [
+      {"title": "PvP", "description": "Combate contra otros jugadores.", "selectedByDefault": false},
+      {"title": "Defensa", "description": "Defensa de bases y territorios.", "selectedByDefault": false},
+      {"title": "Estrategia", "description": "Planificación y coordinación.", "selectedByDefault": false},
+      {"title": "Eventos", "description": "Combates y eventos competitivos.", "selectedByDefault": false}
+    ]
+  },
+  {
+    "id": "warrior-experience",
+    "name": "Experiencia en combate",
+    "description": "Contanos tu experiencia en PvP y combate.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Tu experiencia, servidores anteriores y combates...",
+    "length": {"enabled": true, "min": 5, "max": 500}
+  },
+  {
+    "id": "warrior-skills",
+    "name": "Habilidades y equipamiento",
+    "description": "Indicá tus habilidades, equipamiento y estrategias.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "PvP, armaduras, armas, pociones, estrategias...",
+    "length": {"enabled": true, "min": 5, "max": 1000}
+  },
+  {
+    "id": "warrior-record",
+    "name": "Antecedentes",
+    "description": "Compartí logros, participaciones o referencias.",
+    "type": "paragraph",
+    "required": false,
+    "placeholder": "Logros, clanes anteriores o referencias...",
+    "length": {"enabled": false, "min": 0, "max": 1000}
+  },
+  {
+    "id": "warrior-availability",
+    "name": "Disponibilidad",
+    "description": "¿Cuándo podés participar en combates o entrenamientos?",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Horarios y disponibilidad...",
+    "length": {"enabled": true, "min": 2, "max": 500}
+  },
+  {
+    "id": "promotion-current",
+    "name": "Rango actual",
+    "description": "Indicá cuál es tu rango actual dentro de MystiCa.",
+    "type": "short",
+    "required": true,
+    "placeholder": "Tu rango actual...",
+    "length": {"enabled": true, "min": 2, "max": 100}
+  },
+  {
+    "id": "promotion-requested",
+    "name": "Rango solicitado",
+    "description": "¿A qué rango estás solicitando ascender?",
+    "type": "short",
+    "required": true,
+    "placeholder": "Rango al que aspirás...",
+    "length": {"enabled": true, "min": 2, "max": 100}
+  },
+  {
+    "id": "promotion-history",
+    "name": "Trayectoria",
+    "description": "Contanos cuánto tiempo llevás y qué funciones cumpliste.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Tu trayectoria dentro del clan...",
+    "length": {"enabled": true, "min": 10, "max": 1000}
+  },
+  {
+    "id": "promotion-merits",
+    "name": "Méritos",
+    "description": "Detallá tus aportes, logros y responsabilidades.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Tus contribuciones y logros...",
+    "length": {"enabled": true, "min": 10, "max": 1000}
+  },
+  {
+    "id": "promotion-motivation",
+    "name": "Motivación",
+    "description": "Explicá por qué considerás que merecés el ascenso.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "¿Por qué deberían ascenderte?...",
+    "length": {"enabled": true, "min": 10, "max": 1000}
+  },
+  {
+    "id": "report-type",
+    "name": "Tipo de reporte",
+    "description": "Seleccioná qué situación querés reportar.",
+    "type": "radio-select",
+    "required": true,
+    "choices": [
+      {"title": "Jugador", "description": "Conducta de un jugador.", "selectedByDefault": false},
+      {"title": "Bug", "description": "Error o fallo del servidor.", "selectedByDefault": false},
+      {"title": "Abuso", "description": "Abuso de permisos o herramientas.", "selectedByDefault": false},
+      {"title": "Otro", "description": "Otra situación que requiere revisión.", "selectedByDefault": false}
+    ]
+  },
+  {
+    "id": "report-user",
+    "name": "Usuario involucrado",
+    "description": "Indicá el nombre del jugador involucrado, si corresponde.",
+    "type": "short",
+    "required": false,
+    "placeholder": "Nombre del jugador...",
+    "length": {"enabled": false, "min": 0, "max": 100}
+  },
+  {
+    "id": "report-date",
+    "name": "Fecha del incidente",
+    "description": "¿Cuándo ocurrió la situación?",
+    "type": "short",
+    "required": true,
+    "placeholder": "Fecha y hora aproximada...",
+    "length": {"enabled": true, "min": 2, "max": 100}
+  },
+  {
+    "id": "report-details",
+    "name": "Descripción del incidente",
+    "description": "Explicá detalladamente lo sucedido.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Describí lo ocurrido...",
+    "length": {"enabled": true, "min": 10, "max": 1000}
+  },
+  {
+    "id": "report-evidence",
     "name": "Pruebas del incidente",
     "description": "Compartí capturas, videos o enlaces que permitan verificar el reporte.",
     "type": "paragraph",
