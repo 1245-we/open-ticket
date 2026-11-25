@@ -9,7 +9,14 @@
     "language":"spanish",
     "prefix":"!ticket ",
     "serverId":"1526068407752196116",
-    "globalAdmins":["DISCORD_ROLE_ID"],
+    "globalAdmins": [
+    "1526089444762058902",
+    "1526089280420843640",
+    "1551767641751035955",
+    "1569777653186297886",
+    "1526087933755392102",
+    "1526089087872667669"
+],
 
     "slashCommands":true,
     "textCommands":false,
