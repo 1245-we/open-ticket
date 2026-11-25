@@ -1,102 +1,378 @@
-/*
- * OPEN TICKET MODAL QUESTIONS
- * ----------------------------------------------
- * Create customizable modal questions that will be shown before creating a ticket.
- * Each ticket option (config/options.jsonc) can contain a maximum of 5 questions.
- * There are 6 types of questions available: short, paragraph, dropdown, radio-select, checkbox-select, text-display
- * 
- * TIP: Create new questions by copying everything between and including the {...} brackets of a question. Paste it after the last question and make sure that they are seperated by a comma.
- */
+
 [
-    {
-        /* A short text input modal question. */
-        "id":"example-question-1",
-        "name":"Example Question 1",
-        "description":"", //Leave empty to disable
-        "type":"short",
-        "required":true,
-        
-        "placeholder":"Insert answer...",
-        "length":{
-            /* Configure length limits for the answer. */
-            "enabled":false,
-            "min":0,
-            "max":1000
-        }
-    },
-    {
-        /* A paragraph text input modal question. */
-        "id":"example-question-2",
-        "name":"Example Question 2",
-        "description":"", //Leave empty to disable
-        "type":"paragraph",
-        "required":false,
-        
-        "placeholder":"Insert answer...",
-        "length":{
-            /* Configure length limits for the answer. */
-            "enabled":false,
-            "min":0,
-            "max":1000
-        }
-    },
-    {
-        /* A dropdown menu input modal question with up to 25 choices. "emoji" & "description" fields are optional. */
-        "id":"example-question-3",
-        "name":"Example Question 3",
-        "description":"This is a dropdown question.", //Leave empty to disable
-        "type":"dropdown",
-        "required":false,
-        
-        "placeholder":"Choose your answer...",
-        "choices":[
-            {"title":"Choice A","description":"Apple","emoji":"🍎"},
-            {"title":"Choice B","description":"Banana","emoji":"🍌"},
-            {"title":"Choice C","description":"Orange","emoji":"🍊"},
-            {"title":"Choice D","description":"Kiwi","emoji":"🥝"}
-        ]
-    },
-    {
-        /* A radio select input modal question with up to 10 choices. */
-        "id":"example-question-4",
-        "name":"Example Question 4",
-        "description":"This is a radio select question.", //Leave empty to disable
-        "type":"radio-select",
-        "required":true,
-        
-        "choices":[
-            {"title":"Choice A","description":"Up","selectedByDefault":false},
-            {"title":"Choice B","description":"Down","selectedByDefault":false},
-            {"title":"Choice C","description":"Left","selectedByDefault":false},
-            {"title":"Choice D","description":"Right","selectedByDefault":false}
-        ]
-    },
-    {
-        /* A checkbox select input modal question with up to 10 choices. */
-        "id":"example-question-5",
-        "name":"Example Question 5",
-        "description":"This is a checkbox select question.", //Leave empty to disable
-        "type":"checkbox-select",
-        "required":true,
-        
-        "limits":{
-            /* Configure checkbox amount limits for the answer. */
-            "enabled":false,
-            "min":0,
-            "max":10
-        },
-        "choices":[
-            {"title":"Choice A","description":"Happiness","selectedByDefault":false},
-            {"title":"Choice B","description":"Anger","selectedByDefault":false},
-            {"title":"Choice C","description":"Sadness","selectedByDefault":false},
-            {"title":"Choice D","description":"Fear","selectedByDefault":false}
-        ]
-    },
-    {
-        /* Show text in a modal to provide extra details or explain questions. */
-        "id":"example-text-display",
-        "type":"text-display",
-        
-        "textContents":"This is a text display. It isn't a question, but allows you to display additional details."
-    }
+  {
+    "id": "support-area",
+    "name": "Área de asistencia",
+    "description": "Selecciona el área relacionada con tu solicitud.",
+    "type": "dropdown",
+    "required": true,
+    "placeholder": "Selecciona un área...",
+    "choices": [
+      {"title": "Problemas técnicos", "description": "Errores, fallos o inconvenientes.", "emoji": "⚙️"},
+      {"title": "Consultas administrativas", "description": "Dudas sobre la organización.", "emoji": "📋"},
+      {"title": "Problemas con miembros", "description": "Conflictos o situaciones internas.", "emoji": "👥"},
+      {"title": "Compras y beneficios", "description": "Consultas sobre compras o recompensas.", "emoji": "💎"},
+      {"title": "Acceso y permisos", "description": "Problemas de acceso o roles.", "emoji": "🔐"},
+      {"title": "Otro asunto", "description": "Una consulta diferente.", "emoji": "✦"}
+    ]
+  },
+  {
+    "id": "support-priority",
+    "name": "Prioridad de la solicitud",
+    "description": "Indica qué tan urgente consideras el asunto.",
+    "type": "dropdown",
+    "required": true,
+    "placeholder": "Selecciona la prioridad...",
+    "choices": [
+      {"title": "Baja", "description": "Puede atenderse sin urgencia.", "emoji": "🟢"},
+      {"title": "Normal", "description": "Requiere atención habitual.", "emoji": "🟡"},
+      {"title": "Alta", "description": "Necesita atención prioritaria.", "emoji": "🔴"}
+    ]
+  },
+  {
+    "id": "support-subject",
+    "name": "Asunto de la solicitud",
+    "description": "Resume el motivo de tu ticket.",
+    "type": "short",
+    "required": true,
+    "placeholder": "Escribe el asunto...",
+    "length": {"enabled": true, "min": 5, "max": 100}
+  },
+  {
+    "id": "support-details",
+    "name": "Descripción del problema",
+    "description": "Explica la situación con todos los detalles necesarios.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Describe tu situación...",
+    "length": {"enabled": true, "min": 20, "max": 1000}
+  },
+  {
+    "id": "support-evidence",
+    "name": "Información complementaria",
+    "description": "Añade enlaces, capturas o cualquier dato que ayude al equipo.",
+    "type": "paragraph",
+    "required": false,
+    "placeholder": "Información adicional o enlaces...",
+    "length": {"enabled": false, "min": 0, "max": 1000}
+  },
+
+  {
+    "id": "builder-level",
+    "name": "Experiencia en construcción",
+    "description": "Indica tu nivel actual como constructor.",
+    "type": "dropdown",
+    "required": true,
+    "placeholder": "Selecciona tu experiencia...",
+    "choices": [
+      {"title": "Principiante", "description": "Estoy comenzando.", "emoji": "🌱"},
+      {"title": "Intermedio", "description": "Tengo experiencia construyendo.", "emoji": "🧱"},
+      {"title": "Avanzado", "description": "Domino diferentes técnicas.", "emoji": "🏛️"},
+      {"title": "Experto", "description": "Tengo amplia experiencia y proyectos.", "emoji": "👑"}
+    ]
+  },
+  {
+    "id": "builder-style",
+    "name": "Estilo de construcción",
+    "description": "Selecciona los estilos que mejor dominas.",
+    "type": "checkbox-select",
+    "required": true,
+    "limits": {"enabled": true, "min": 1, "max": 5},
+    "choices": [
+      {"title": "Medieval", "description": "Castillos, aldeas y fortalezas.", "selectedByDefault": false},
+      {"title": "Moderno", "description": "Arquitectura contemporánea.", "selectedByDefault": false},
+      {"title": "Romano", "description": "Templos, ciudades y monumentos.", "selectedByDefault": false},
+      {"title": "Fantasía", "description": "Construcciones creativas y mágicas.", "selectedByDefault": false},
+      {"title": "Natural", "description": "Paisajes y terraformación.", "selectedByDefault": false},
+      {"title": "Otro", "description": "Otros estilos.", "selectedByDefault": false}
+    ]
+  },
+  {
+    "id": "builder-tools",
+    "name": "Herramientas y conocimientos",
+    "description": "Explica qué técnicas, comandos o herramientas sabes utilizar.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "WorldEdit, Terraformación, detalles...",
+    "length": {"enabled": true, "min": 20, "max": 1000}
+  },
+  {
+    "id": "builder-portfolio",
+    "name": "Proyectos y construcciones",
+    "description": "Comparte imágenes o enlaces de tus trabajos anteriores.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Enlaces a capturas o proyectos...",
+    "length": {"enabled": true, "min": 5, "max": 1000}
+  },
+  {
+    "id": "builder-availability",
+    "name": "Disponibilidad y motivación",
+    "description": "Cuéntanos cuánto puedes colaborar y por qué quieres entrar al equipo.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Tu disponibilidad y motivación...",
+    "length": {"enabled": true, "min": 15, "max": 1000}
+  },
+
+  {
+    "id": "farmer-specialty",
+    "name": "Especialidad técnica",
+    "description": "Selecciona las áreas que mejor dominas.",
+    "type": "checkbox-select",
+    "required": true,
+    "limits": {"enabled": true, "min": 1, "max": 5},
+    "choices": [
+      {"title": "Granjas", "description": "Diseño y mantenimiento.", "selectedByDefault": false},
+      {"title": "Redstone", "description": "Circuitos y mecanismos.", "selectedByDefault": false},
+      {"title": "Automatización", "description": "Sistemas automáticos.", "selectedByDefault": false},
+      {"title": "Optimización", "description": "Rendimiento y eficiencia.", "selectedByDefault": false},
+      {"title": "Técnico general", "description": "Conocimientos variados.", "selectedByDefault": false}
+    ]
+  },
+  {
+    "id": "farmer-experience",
+    "name": "Experiencia técnica",
+    "description": "Indica cuánto tiempo llevas desarrollando sistemas y granjas.",
+    "type": "short",
+    "required": true,
+    "placeholder": "Describe brevemente tu experiencia...",
+    "length": {"enabled": true, "min": 5, "max": 150}
+  },
+  {
+    "id": "farmer-knowledge",
+    "name": "Conocimientos y sistemas",
+    "description": "Explica qué mecanismos, granjas o sistemas sabes construir.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Describe tus conocimientos...",
+    "length": {"enabled": true, "min": 20, "max": 1000}
+  },
+  {
+    "id": "farmer-projects",
+    "name": "Proyectos y evidencias",
+    "description": "Comparte ejemplos de tus granjas o sistemas.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Enlaces, capturas o descripciones...",
+    "length": {"enabled": true, "min": 5, "max": 1000}
+  },
+  {
+    "id": "farmer-availability",
+    "name": "Disponibilidad y motivación",
+    "description": "Explica cómo colaborarías con el equipo.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Tu disponibilidad y motivación...",
+    "length": {"enabled": true, "min": 15, "max": 1000}
+  },
+
+  {
+    "id": "warrior-specialty",
+    "name": "Especialidad de combate",
+    "description": "Selecciona tus principales habilidades.",
+    "type": "checkbox-select",
+    "required": true,
+    "limits": {"enabled": true, "min": 1, "max": 4},
+    "choices": [
+      {"title": "PvP", "description": "Combate contra otros jugadores.", "selectedByDefault": false},
+      {"title": "Defensa", "description": "Protección del territorio y aliados.", "selectedByDefault": false},
+      {"title": "Estrategia", "description": "Planificación y coordinación.", "selectedByDefault": false},
+      {"title": "Eventos y torneos", "description": "Participación competitiva.", "selectedByDefault": false}
+    ]
+  },
+  {
+    "id": "warrior-experience",
+    "name": "Experiencia en combate",
+    "description": "Cuéntanos tu trayectoria en PvP y actividades militares.",
+    "type": "short",
+    "required": true,
+    "placeholder": "Tu experiencia...",
+    "length": {"enabled": true, "min": 5, "max": 150}
+  },
+  {
+    "id": "warrior-skills",
+    "name": "Equipamiento y habilidades",
+    "description": "Describe tus técnicas, equipamiento y fortalezas.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Armas, armaduras, técnicas y habilidades...",
+    "length": {"enabled": true, "min": 20, "max": 1000}
+  },
+  {
+    "id": "warrior-record",
+    "name": "Combates y participación",
+    "description": "Comparte experiencias en guerras, torneos o eventos.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Describe tus participaciones...",
+    "length": {"enabled": true, "min": 10, "max": 1000}
+  },
+  {
+    "id": "warrior-availability",
+    "name": "Disponibilidad y compromiso",
+    "description": "Explica cómo contribuirías al equipo de combate.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Tu disponibilidad y motivación...",
+    "length": {"enabled": true, "min": 15, "max": 1000}
+  },
+
+  {
+    "id": "promotion-current",
+    "name": "Nombre y rango actual",
+    "description": "Indica tu nombre dentro del servidor y tu rango actual.",
+    "type": "short",
+    "required": true,
+    "placeholder": "Nombre y rango actual...",
+    "length": {"enabled": true, "min": 2, "max": 100}
+  },
+  {
+    "id": "promotion-requested",
+    "name": "Rango que solicitas",
+    "description": "Escribe el rango al que deseas ascender.",
+    "type": "short",
+    "required": true,
+    "placeholder": "Rango solicitado...",
+    "length": {"enabled": true, "min": 2, "max": 100}
+  },
+  {
+    "id": "promotion-history",
+    "name": "Trayectoria en MystiCa",
+    "description": "Describe tu recorrido y participación dentro del servidor.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Tu trayectoria...",
+    "length": {"enabled": true, "min": 20, "max": 1000}
+  },
+  {
+    "id": "promotion-merits",
+    "name": "Méritos y responsabilidades",
+    "description": "Explica tus aportes, logros y responsabilidades asumidas.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Tus méritos y contribuciones...",
+    "length": {"enabled": true, "min": 20, "max": 1000}
+  },
+  {
+    "id": "promotion-motivation",
+    "name": "Motivación y compromiso",
+    "description": "¿Por qué consideras que estás preparado para ascender?",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Explica tus motivos...",
+    "length": {"enabled": true, "min": 20, "max": 1000}
+  },
+
+  {
+    "id": "report-type",
+    "name": "Tipo de incidente",
+    "description": "Selecciona la categoría que mejor describa lo ocurrido.",
+    "type": "dropdown",
+    "required": true,
+    "placeholder": "Selecciona el incidente...",
+    "choices": [
+      {"title": "Acoso o intimidación", "description": "Conductas de hostigamiento.", "emoji": "🚫"},
+      {"title": "Insultos o amenazas", "description": "Agresiones verbales o amenazas.", "emoji": "⚠️"},
+      {"title": "Spam o publicidad", "description": "Mensajes no permitidos.", "emoji": "📢"},
+      {"title": "Fraude o estafa", "description": "Engaños o intentos de estafa.", "emoji": "🔎"},
+      {"title": "Abuso de permisos", "description": "Uso indebido de privilegios.", "emoji": "🛡️"},
+      {"title": "Incumplimiento de normas", "description": "Otras infracciones.", "emoji": "📜"},
+      {"title": "Otro incidente", "description": "Situación diferente.", "emoji": "✦"}
+    ]
+  },
+  {
+    "id": "report-user",
+    "name": "Usuario involucrado",
+    "description": "Indica el nombre o identificador del usuario denunciado.",
+    "type": "short",
+    "required": true,
+    "placeholder": "Nombre o ID de Discord...",
+    "length": {"enabled": true, "min": 2, "max": 100}
+  },
+  {
+    "id": "report-date",
+    "name": "Fecha y contexto",
+    "description": "Indica cuándo y dónde ocurrió el incidente.",
+    "type": "short",
+    "required": true,
+    "placeholder": "Fecha, hora y canal o lugar...",
+    "length": {"enabled": true, "min": 3, "max": 150}
+  },
+  {
+    "id": "report-details",
+    "name": "Descripción de los hechos",
+    "description": "Explica lo sucedido de forma clara y ordenada.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Describe los hechos...",
+    "length": {"enabled": true, "min": 20, "max": 1000}
+  },
+  {
+    "id": "report-evidence",
+    "name": "Evidencias disponibles",
+    "description": "Adjunta enlaces a capturas, vídeos o pruebas.",
+    "type": "paragraph",
+    "required": false,
+    "placeholder": "Enlaces y pruebas...",
+    "length": {"enabled": false, "min": 0, "max": 1000}
+  },
+
+  {
+    "id": "alliance-community",
+    "name": "Identidad de la comunidad",
+    "description": "Indica el nombre y la temática de tu comunidad.",
+    "type": "short",
+    "required": true,
+    "placeholder": "Nombre y temática...",
+    "length": {"enabled": true, "min": 3, "max": 150}
+  },
+  {
+    "id": "alliance-invite",
+    "name": "Enlace de invitación",
+    "description": "Comparte una invitación válida a tu servidor.",
+    "type": "short",
+    "required": true,
+    "placeholder": "https://discord.gg/...",
+    "length": {"enabled": true, "min": 5, "max": 200}
+  },
+  {
+    "id": "alliance-size",
+    "name": "Tamaño de la comunidad",
+    "description": "Selecciona la cantidad aproximada de miembros.",
+    "type": "dropdown",
+    "required": true,
+    "placeholder": "Cantidad de miembros...",
+    "choices": [
+      {"title": "Menos de 50", "description": "Comunidad pequeña.", "emoji": "🌱"},
+      {"title": "50 a 100", "description": "Comunidad en crecimiento.", "emoji": "🌿"},
+      {"title": "101 a 250", "description": "Comunidad establecida.", "emoji": "🏛️"},
+      {"title": "251 a 500", "description": "Comunidad amplia.", "emoji": "⭐"},
+      {"title": "Más de 500", "description": "Comunidad numerosa.", "emoji": "👑"}
+    ]
+  },
+  {
+    "id": "alliance-type",
+    "name": "Modalidad de alianza",
+    "description": "Selecciona el tipo de colaboración que propones.",
+    "type": "dropdown",
+    "required": true,
+    "placeholder": "Tipo de alianza...",
+    "choices": [
+      {"title": "Alianza comunitaria", "description": "Relación entre comunidades.", "emoji": "🤝"},
+      {"title": "Difusión mutua", "description": "Promoción recíproca.", "emoji": "📣"},
+      {"title": "Cooperación institucional", "description": "Colaboración entre equipos.", "emoji": "🏛️"},
+      {"title": "Eventos conjuntos", "description": "Actividades compartidas.", "emoji": "🎉"},
+      {"title": "Otra modalidad", "description": "Propuesta personalizada.", "emoji": "✦"}
+    ]
+  },
+  {
+    "id": "alliance-proposal",
+    "name": "Propuesta de colaboración",
+    "description": "Explica qué ofrece tu comunidad y qué esperas de MystiCa.",
+    "type": "paragraph",
+    "required": true,
+    "placeholder": "Describe tu propuesta y beneficios mutuos...",
+    "length": {"enabled": true, "min": 20, "max": 1000}
+  }
 ]
