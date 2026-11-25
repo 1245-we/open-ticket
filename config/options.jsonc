@@ -1,165 +1,610 @@
-/*
- * OPEN TICKET BUTTON OPTIONS
- * ----------------------------------------------
- * Create customizable ticket, website, reaction-role or sub-panel button options.
- * Up to 25 options can be added to each panel in (config/panels.jsonc)
- * There are 4 types of options available: ticket, website, role, sub-panel
- * 
- * TIP: Create new options by copying everything between and including the {...} brackets of an option. Paste it after the last option and make sure that they are seperated by a comma.
- */
+
 [
-    {
-        /* A ticket option creates a button to open a ticket. */
-        "id":"example-ticket",
-        "name":"Question",
-        "description":"Want to tell us something? Create this ticket for general questions for our support team.", //Leave empty to disable
-        "type":"ticket",
-        
-        "button":{
-            /* Configure the button style of this option. At least one of "emoji" or "label" must be provided. */
-            "emoji":"🎫",
-            "label":"Question",
-            "color":"gray" //Choices: gray, red, green, blue
-        },
-        
-        /* Add up to 5 modal questions IDs from (config/questions.jsonc). */
-        "questions":["example-question-1","example-question-2"],
-        
-        "ticketAdmins":["DISCORD_ROLE_ID"],
-        "readonlyAdmins":["DISCORD_ROLE_ID"],
-        "allowCreationByBlacklistedUsers":false,
-        
-        "channel":{
-            /* Configure the name, topic and category of the ticket option. */
-            "prefix":"question-",
-            "suffix":"user-name", //Choices: user-name, user-id, random-number, random-hex, counter-dynamic, counter-fixed
-            "category":"DISCORD_CATEGORY_ID", //Leave empty to disable
-            "topic":"The ticket topic shown in the channel." //Leave empty to disable
-        },
-        
-        "dmMessage":{
-            /* Send a customisable message in DM when creating a ticket. */
-            "enabled":false,
-            "text":"", //Leave empty to disable
-            "embed":{
-                "enabled":false,
-                "title":"Question Ticket", //Leave empty to disable
-                "description":"Thank you for creating a ticket in our server. We will try to help you as soon as possible.", //Leave empty to disable
-                "customColor":"#f8ab00", //Leave empty to use default color
-                
-                "image":"", //Image URL. Leave empty to disable
-                "thumbnail":"", //Image URL. Leave empty to disable
-                /* Embed fields. Set to empty list [] to disable. */
-                "fields":[
-                    {"name":"FIELD_NAME","value":"FIELD_VALUE","inline":false}
-                ],
-                "timestamp":false
-            }
-        },
-        "ticketMessage":{
-            /* Send a customisable message in the ticket with close, claim, delete, ... buttons. */
-            "enabled":true,
-            "text":"", //Leave empty to disable
-            "embed":{
-                "enabled":true,
-                "title":"Question Ticket", //Leave empty to disable
-                "description":"Thank you for creating a ticket in our server.\nOur support team will assist you as soon as possible.", //Leave empty to disable
-                "customColor":"#f8ab00", //Leave empty to use default color
-                
-                "image":"", //Image URL. Leave empty to disable
-                "thumbnail":"", //Image URL. Leave empty to disable
-                /* Embed fields. Set to empty list [] to disable. */
-                "fields":[
-                    {"name":"FIELD_NAME","value":"FIELD_VALUE","inline":false}
-                ],
-                "timestamp":false
-            },
-            "ping":{
-                /* Customise the user & role mentions of this ticket message. */
-                "@here":true,
-                "@everyone":false,
-                "custom":["DISCORD_ROLE_ID"]
-            }
-        },
-        "autoclose":{
-            /* Autoclose this ticket after a period of inactivity or when the creator leaves the server. */
-            "enableInactiveHours":false,
-            "inactiveHours":24,
-            "enableUserLeave":false,
-            "disableOnClaim":false
-        },
-        "autodelete":{
-            /* Autodelete this ticket after a period of inactivity or when the creator leaves the server. */
-            "enableInactiveDays":false,
-            "inactiveDays":7,
-            "enableUserLeave":false,
-            "disableOnClaim":false
-        },
-        "cooldown":{
-            /* Users must wait a certain period before being able to create another ticket of this type. */
-            "enabled":false,
-            "cooldownMinutes":10
-        },
-        "limits":{
-            /* Set the maximum amount of simultaneous tickets of this option. */
-            "enabled":false,
-            "globalMaximum":20,
-            "userMaximum":3
-        },
-        "slowMode":{
-            /* Enable slow-mode in the ticket channel. */
-            "enabled":false,
-            "slowModeSeconds":20
-        }
+  {
+    "id": "soporte-general",
+    "name": "Soporte general",
+    "description": "¿Necesitas ayuda? Nuestro equipo de asistencia está aquí para ayudarte.",
+    "type": "ticket",
+    "button": {
+      "emoji": "🎫",
+      "label": "Soporte",
+      "color": "gray"
     },
-    {
-        /* A website option creates a button with a URL to an external website. */
-        "id":"example-website",
-        "name":"Website",
-        "description":"Take a look at our amazing website.", //Leave empty to disable
-        "type":"website",
-        
-        "button":{
-            /* Configure the button style of this option. At least one of "emoji" or "label" must be provided. */
-            "emoji":"😃",
-            "label":"Visit Website"
-        },
-        
-        "url":"https://www.dj-dj.be"
+    "questions": [
+      "support-area",
+      "support-priority",
+      "support-subject",
+      "support-details",
+      "support-evidence"
+    ],
+    "ticketAdmins": [],
+    "readonlyAdmins": [],
+    "allowCreationByBlacklistedUsers": false,
+    "channel": {
+      "prefix": "soporte-",
+      "suffix": "user-name",
+      "category": "",
+      "topic": "Centro de asistencia de MystiCa Support."
     },
-    {
-        /* A reaction-role option creates a button for members to choose roles. */
-        "id":"example-role",
-        "name":"Update Ping",
-        "description":"Receive notifications about updates in our server.", //Leave empty to disable
-        "type":"role",
-        
-        "button":{
-            /* Configure the button style of this option. At least one of "emoji" or "label" must be provided. */
-            "emoji":"📢",
-            "label":"Update Ping",
-            "color":"gray" //Choices: gray, red, green, blue
-        },
-        
-        "roles":["DISCORD_ROLE_ID"],
-        "mode":"add&remove OR remove OR add", //What to do with the roles. Choices: add&remove, add, remove
-        "removeRolesOnAdd":["DISCORD_ROLE_ID"], //Remove these old roles when new roles are added.
-        "addOnMemberJoin":false //Add these roles automatically when joining the server.
+    "dmMessage": {
+      "enabled": false,
+      "text": "",
+      "embed": {
+        "enabled": false,
+        "title": "Soporte MystiCa",
+        "description": "Tu solicitud ha sido recibida.",
+        "customColor": "#D4AF37",
+        "image": "",
+        "thumbnail": "",
+        "fields": [],
+        "timestamp": false
+      }
     },
-    {
-        /* A sub-panel option creates a button which sends another panel for additional options. */
-        "id":"example-sub-panel",
-        "name":"Example Sub-Panel",
-        "description":"This is an example of how to implement a sub-panel in Open Ticket.", //Leave empty to disable
-        "type":"sub-panel",
-        
-        "button":{
-            /* Configure the button style of this option. At least one of "emoji" or "label" must be provided. */
-            "emoji":"📋",
-            "label":"Sub-Panel Example",
-            "color":"gray" //Choices: gray, red, green, blue
-        },
-        
-        "subPanelId":"example-panel" //Choose a panel ID from (config/panels.jsonc)
+    "ticketMessage": {
+      "enabled": true,
+      "text": "",
+      "embed": {
+        "enabled": true,
+        "title": "✦ SOPORTE GENERAL",
+        "description": "Bienvenido al centro de asistencia de **MystiCa**.\n\nTu solicitud ha sido registrada correctamente. Un miembro del equipo revisará tu caso y te atenderá lo antes posible.\n\n**Mientras esperas:**\n• Proporciona toda la información necesaria.\n• Mantén una comunicación respetuosa.\n• Evita abrir solicitudes duplicadas.\n\nGracias por confiar en MystiCa.",
+        "customColor": "#D4AF37",
+        "image": "",
+        "thumbnail": "",
+        "fields": [],
+        "timestamp": true
+      },
+      "ping": {
+        "@here": false,
+        "@everyone": false,
+        "custom": []
+      }
+    },
+    "autoclose": {
+      "enableInactiveHours": false,
+      "inactiveHours": 24,
+      "enableUserLeave": false,
+      "disableOnClaim": false
+    },
+    "autodelete": {
+      "enableInactiveDays": false,
+      "inactiveDays": 7,
+      "enableUserLeave": false,
+      "disableOnClaim": false
+    },
+    "cooldown": {
+      "enabled": false,
+      "cooldownMinutes": 10
+    },
+    "limits": {
+      "enabled": false,
+      "globalMaximum": 20,
+      "userMaximum": 3
+    },
+    "slowMode": {
+      "enabled": false,
+      "slowModeSeconds": 20
     }
+  },
+  {
+    "id": "postulaciones",
+    "name": "Postulaciones",
+    "description": "Accede a las solicitudes de ingreso y ascenso de MystiCa.",
+    "type": "sub-panel",
+    "button": {
+      "emoji": "🏛️",
+      "label": "Postulaciones",
+      "color": "gray"
+    },
+    "subPanelId": "mystica-postulaciones"
+  },
+  {
+    "id": "post-builder",
+    "name": "Postulación Builder",
+    "description": "Solicita ingresar al equipo de construcción de MystiCa.",
+    "type": "ticket",
+    "button": {
+      "emoji": "🏗️",
+      "label": "Builder",
+      "color": "gray"
+    },
+    "questions": [
+      "builder-level",
+      "builder-style",
+      "builder-tools",
+      "builder-portfolio",
+      "builder-availability"
+    ],
+    "ticketAdmins": [],
+    "readonlyAdmins": [],
+    "allowCreationByBlacklistedUsers": false,
+    "channel": {
+      "prefix": "builder-",
+      "suffix": "user-name",
+      "category": "",
+      "topic": "Postulación al equipo Builder de MystiCa."
+    },
+    "dmMessage": {
+      "enabled": false,
+      "text": "",
+      "embed": {
+        "enabled": false,
+        "title": "Postulación Builder",
+        "description": "",
+        "customColor": "#D4AF37",
+        "image": "",
+        "thumbnail": "",
+        "fields": [],
+        "timestamp": false
+      }
+    },
+    "ticketMessage": {
+      "enabled": true,
+      "text": "",
+      "embed": {
+        "enabled": true,
+        "title": "✦ POSTULACIÓN BUILDER",
+        "description": "Bienvenido a la evaluación de construcción de **MystiCa**.\n\nHemos recibido tu candidatura. El equipo revisará tu experiencia, conocimientos y proyectos.\n\n**Importante:** comparte evidencias de tus construcciones cuando sea posible. La incorporación depende de una evaluación del equipo.",
+        "customColor": "#D4AF37",
+        "image": "",
+        "thumbnail": "",
+        "fields": [],
+        "timestamp": true
+      },
+      "ping": {
+        "@here": false,
+        "@everyone": false,
+        "custom": []
+      }
+    },
+    "autoclose": {
+      "enableInactiveHours": false,
+      "inactiveHours": 24,
+      "enableUserLeave": false,
+      "disableOnClaim": false
+    },
+    "autodelete": {
+      "enableInactiveDays": false,
+      "inactiveDays": 7,
+      "enableUserLeave": false,
+      "disableOnClaim": false
+    },
+    "cooldown": {
+      "enabled": false,
+      "cooldownMinutes": 10
+    },
+    "limits": {
+      "enabled": false,
+      "globalMaximum": 20,
+      "userMaximum": 3
+    },
+    "slowMode": {
+      "enabled": false,
+      "slowModeSeconds": 20
+    }
+  },
+  {
+    "id": "post-farmer",
+    "name": "Postulación Farmer Técnico",
+    "description": "Solicita ingresar al equipo de granjas y especialidades técnicas.",
+    "type": "ticket",
+    "button": {
+      "emoji": "⚙️",
+      "label": "Farmer / Técnico",
+      "color": "gray"
+    },
+    "questions": [
+      "farmer-specialty",
+      "farmer-experience",
+      "farmer-knowledge",
+      "farmer-projects",
+      "farmer-availability"
+    ],
+    "ticketAdmins": [],
+    "readonlyAdmins": [],
+    "allowCreationByBlacklistedUsers": false,
+    "channel": {
+      "prefix": "farmer-",
+      "suffix": "user-name",
+      "category": "",
+      "topic": "Postulación al equipo Farmer y Técnico de MystiCa."
+    },
+    "dmMessage": {
+      "enabled": false,
+      "text": "",
+      "embed": {
+        "enabled": false,
+        "title": "Postulación Farmer",
+        "description": "",
+        "customColor": "#D4AF37",
+        "image": "",
+        "thumbnail": "",
+        "fields": [],
+        "timestamp": false
+      }
+    },
+    "ticketMessage": {
+      "enabled": true,
+      "text": "",
+      "embed": {
+        "enabled": true,
+        "title": "✦ POSTULACIÓN FARMER / TÉCNICO",
+        "description": "Bienvenido al proceso de selección técnica de **MystiCa**.\n\nTu candidatura ha sido recibida. Evaluaremos tus conocimientos en granjas, redstone, automatización y optimización.\n\n**Importante:** el equipo podrá solicitar pruebas o demostraciones de tus sistemas antes de tomar una decisión.",
+        "customColor": "#D4AF37",
+        "image": "",
+        "thumbnail": "",
+        "fields": [],
+        "timestamp": true
+      },
+      "ping": {
+        "@here": false,
+        "@everyone": false,
+        "custom": []
+      }
+    },
+    "autoclose": {
+      "enableInactiveHours": false,
+      "inactiveHours": 24,
+      "enableUserLeave": false,
+      "disableOnClaim": false
+    },
+    "autodelete": {
+      "enableInactiveDays": false,
+      "inactiveDays": 7,
+      "enableUserLeave": false,
+      "disableOnClaim": false
+    },
+    "cooldown": {
+      "enabled": false,
+      "cooldownMinutes": 10
+    },
+    "limits": {
+      "enabled": false,
+      "globalMaximum": 20,
+      "userMaximum": 3
+    },
+    "slowMode": {
+      "enabled": false,
+      "slowModeSeconds": 20
+    }
+  },
+  {
+    "id": "post-guerrero",
+    "name": "Postulación Guerrero",
+    "description": "Solicita ingresar al equipo de combate y defensa.",
+    "type": "ticket",
+    "button": {
+      "emoji": "⚔️",
+      "label": "Guerrero",
+      "color": "gray"
+    },
+    "questions": [
+      "warrior-specialty",
+      "warrior-experience",
+      "warrior-skills",
+      "warrior-record",
+      "warrior-availability"
+    ],
+    "ticketAdmins": [],
+    "readonlyAdmins": [],
+    "allowCreationByBlacklistedUsers": false,
+    "channel": {
+      "prefix": "guerrero-",
+      "suffix": "user-name",
+      "category": "",
+      "topic": "Postulación al equipo de combate de MystiCa."
+    },
+    "dmMessage": {
+      "enabled": false,
+      "text": "",
+      "embed": {
+        "enabled": false,
+        "title": "Postulación Guerrero",
+        "description": "",
+        "customColor": "#D4AF37",
+        "image": "",
+        "thumbnail": "",
+        "fields": [],
+        "timestamp": false
+      }
+    },
+    "ticketMessage": {
+      "enabled": true,
+      "text": "",
+      "embed": {
+        "enabled": true,
+        "title": "✦ POSTULACIÓN GUERRERO",
+        "description": "Bienvenido a la evaluación del equipo de combate de **MystiCa**.\n\nTu solicitud ha sido recibida. Se evaluarán tus habilidades, experiencia y capacidad de colaboración.\n\n**Importante:** el ingreso está sujeto a la valoración del equipo responsable.",
+        "customColor": "#D4AF37",
+        "image": "",
+        "thumbnail": "",
+        "fields": [],
+        "timestamp": true
+      },
+      "ping": {
+        "@here": false,
+        "@everyone": false,
+        "custom": []
+      }
+    },
+    "autoclose": {
+      "enableInactiveHours": false,
+      "inactiveHours": 24,
+      "enableUserLeave": false,
+      "disableOnClaim": false
+    },
+    "autodelete": {
+      "enableInactiveDays": false,
+      "inactiveDays": 7,
+      "enableUserLeave": false,
+      "disableOnClaim": false
+    },
+    "cooldown": {
+      "enabled": false,
+      "cooldownMinutes": 10
+    },
+    "limits": {
+      "enabled": false,
+      "globalMaximum": 20,
+      "userMaximum": 3
+    },
+    "slowMode": {
+      "enabled": false,
+      "slowModeSeconds": 20
+    }
+  },
+  {
+    "id": "post-ascenso",
+    "name": "Solicitud de ascenso",
+    "description": "Solicita una revisión de tu trayectoria para optar a un ascenso.",
+    "type": "ticket",
+    "button": {
+      "emoji": "👑",
+      "label": "Ascensos",
+      "color": "gray"
+    },
+    "questions": [
+      "promotion-current",
+      "promotion-requested",
+      "promotion-history",
+      "promotion-merits",
+      "promotion-motivation"
+    ],
+    "ticketAdmins": [],
+    "readonlyAdmins": [],
+    "allowCreationByBlacklistedUsers": false,
+    "channel": {
+      "prefix": "ascenso-",
+      "suffix": "user-name",
+      "category": "",
+      "topic": "Solicitud de ascenso dentro de MystiCa."
+    },
+    "dmMessage": {
+      "enabled": false,
+      "text": "",
+      "embed": {
+        "enabled": false,
+        "title": "Solicitud de ascenso",
+        "description": "",
+        "customColor": "#D4AF37",
+        "image": "",
+        "thumbnail": "",
+        "fields": [],
+        "timestamp": false
+      }
+    },
+    "ticketMessage": {
+      "enabled": true,
+      "text": "",
+      "embed": {
+        "enabled": true,
+        "title": "✦ SOLICITUD DE ASCENSO",
+        "description": "Tu solicitud de ascenso ha sido registrada en **MystiCa**.\n\nEl liderazgo revisará tu trayectoria, méritos, responsabilidades y compromiso.\n\n**Importante:** presentar una solicitud no garantiza un ascenso. La decisión corresponde al equipo de liderazgo.",
+        "customColor": "#D4AF37",
+        "image": "",
+        "thumbnail": "",
+        "fields": [],
+        "timestamp": true
+      },
+      "ping": {
+        "@here": false,
+        "@everyone": false,
+        "custom": []
+      }
+    },
+    "autoclose": {
+      "enableInactiveHours": false,
+      "inactiveHours": 24,
+      "enableUserLeave": false,
+      "disableOnClaim": false
+    },
+    "autodelete": {
+      "enableInactiveDays": false,
+      "inactiveDays": 7,
+      "enableUserLeave": false,
+      "disableOnClaim": false
+    },
+    "cooldown": {
+      "enabled": false,
+      "cooldownMinutes": 10
+    },
+    "limits": {
+      "enabled": false,
+      "globalMaximum": 20,
+      "userMaximum": 3
+    },
+    "slowMode": {
+      "enabled": false,
+      "slowModeSeconds": 20
+    }
+  },
+  {
+    "id": "reportes",
+    "name": "Reportes",
+    "description": "Informa sobre incumplimientos o situaciones que requieren revisión.",
+    "type": "ticket",
+    "button": {
+      "emoji": "🛡️",
+      "label": "Reportes",
+      "color": "gray"
+    },
+    "questions": [
+      "report-type",
+      "report-user",
+      "report-date",
+      "report-details",
+      "report-evidence"
+    ],
+    "ticketAdmins": [],
+    "readonlyAdmins": [],
+    "allowCreationByBlacklistedUsers": false,
+    "channel": {
+      "prefix": "reporte-",
+      "suffix": "user-name",
+      "category": "",
+      "topic": "Reporte confidencial recibido por MystiCa Support."
+    },
+    "dmMessage": {
+      "enabled": false,
+      "text": "",
+      "embed": {
+        "enabled": false,
+        "title": "Reporte recibido",
+        "description": "",
+        "customColor": "#D4AF37",
+        "image": "",
+        "thumbnail": "",
+        "fields": [],
+        "timestamp": false
+      }
+    },
+    "ticketMessage": {
+      "enabled": true,
+      "text": "",
+      "embed": {
+        "enabled": true,
+        "title": "✦ REPORTE RECIBIDO",
+        "description": "El reporte ha sido registrado correctamente.\n\nEl equipo responsable revisará la información y las evidencias proporcionadas.\n\n**Confidencialidad:** evita compartir públicamente los detalles de este caso. Mantén toda la información dentro de este ticket.",
+        "customColor": "#D4AF37",
+        "image": "",
+        "thumbnail": "",
+        "fields": [],
+        "timestamp": true
+      },
+      "ping": {
+        "@here": false,
+        "@everyone": false,
+        "custom": []
+      }
+    },
+    "autoclose": {
+      "enableInactiveHours": false,
+      "inactiveHours": 24,
+      "enableUserLeave": false,
+      "disableOnClaim": false
+    },
+    "autodelete": {
+      "enableInactiveDays": false,
+      "inactiveDays": 7,
+      "enableUserLeave": false,
+      "disableOnClaim": false
+    },
+    "cooldown": {
+      "enabled": false,
+      "cooldownMinutes": 10
+    },
+    "limits": {
+      "enabled": false,
+      "globalMaximum": 20,
+      "userMaximum": 3
+    },
+    "slowMode": {
+      "enabled": false,
+      "slowModeSeconds": 20
+    }
+  },
+  {
+    "id": "alianzas",
+    "name": "Alianzas",
+    "description": "Presenta una propuesta de colaboración entre comunidades.",
+    "type": "ticket",
+    "button": {
+      "emoji": "🤝",
+      "label": "Alianzas",
+      "color": "gray"
+    },
+    "questions": [
+      "alliance-community",
+      "alliance-invite",
+      "alliance-size",
+      "alliance-type",
+      "alliance-proposal"
+    ],
+    "ticketAdmins": [],
+    "readonlyAdmins": [],
+    "allowCreationByBlacklistedUsers": false,
+    "channel": {
+      "prefix": "alianza-",
+      "suffix": "user-name",
+      "category": "",
+      "topic": "Propuesta de alianza recibida por MystiCa."
+    },
+    "dmMessage": {
+      "enabled": false,
+      "text": "",
+      "embed": {
+        "enabled": false,
+        "title": "Propuesta de alianza",
+        "description": "",
+        "customColor": "#D4AF37",
+        "image": "",
+        "thumbnail": "",
+        "fields": [],
+        "timestamp": false
+      }
+    },
+    "ticketMessage": {
+      "enabled": true,
+      "text": "",
+      "embed": {
+        "enabled": true,
+        "title": "✦ PROPUESTA DE ALIANZA",
+        "description": "Gracias por considerar una colaboración con **MystiCa**.\n\nTu propuesta ha sido recibida. Nuestro equipo evaluará la comunidad, la modalidad y los beneficios de la colaboración.\n\n**Importante:** la alianza estará sujeta a revisión y aprobación institucional.",
+        "customColor": "#D4AF37",
+        "image": "",
+        "thumbnail": "",
+        "fields": [],
+        "timestamp": true
+      },
+      "ping": {
+        "@here": false,
+        "@everyone": false,
+        "custom": []
+      }
+    },
+    "autoclose": {
+      "enableInactiveHours": false,
+      "inactiveHours": 24,
+      "enableUserLeave": false,
+      "disableOnClaim": false
+    },
+    "autodelete": {
+      "enableInactiveDays": false,
+      "inactiveDays": 7,
+      "enableUserLeave": false,
+      "disableOnClaim": false
+    },
+    "cooldown": {
+      "enabled": false,
+      "cooldownMinutes": 10
+    },
+    "limits": {
+      "enabled": false,
+      "globalMaximum": 20,
+      "userMaximum": 3
+    },
+    "slowMode": {
+      "enabled": false,
+      "slowModeSeconds": 20
+    }
+  }
 ]
