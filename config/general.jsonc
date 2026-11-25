@@ -8,7 +8,7 @@
     "mainColor":"#D4AF37",
     "language":"spanish",
     "prefix":"!ticket ",
-    "serverId":"DISCORD_SERVER_ID",
+    "serverId":"1526068407752196116",
     "globalAdmins":["DISCORD_ROLE_ID"],
 
     "slashCommands":true,
