@@ -23,7 +23,7 @@
     "channel": {
       "prefix": "soporte-",
       "suffix": "user-name",
-      "category": "",
+      "category": "1575229605361487892",
       "topic": "Solicitud de soporte de MystiCa."
     },
     "dmMessage": {
@@ -120,7 +120,7 @@
     "channel": {
       "prefix": "post-builder-",
       "suffix": "user-name",
-      "category": "",
+      "category": "1575230182539919420",
       "topic": "Postulación para el área Builder."
     },
     "dmMessage": {
@@ -205,7 +205,7 @@
     "channel": {
       "prefix": "post-farmer-",
       "suffix": "user-name",
-      "category": "",
+      "category": "1575230182539919420",
       "topic": "Postulación para el área Farmer / Técnico."
     },
     "dmMessage": {
@@ -290,7 +290,7 @@
     "channel": {
       "prefix": "post-guerrero-",
       "suffix": "user-name",
-      "category": "",
+      "category": "1575230182539919420",
       "topic": "Postulación para el área Guerrero."
     },
     "dmMessage": {
@@ -375,7 +375,7 @@
     "channel": {
       "prefix": "ascenso-",
       "suffix": "user-name",
-      "category": "",
+      "category": "1575230182539919420",
       "topic": "Solicitud de revisión para ascenso."
     },
     "dmMessage": {
@@ -460,7 +460,7 @@
     "channel": {
       "prefix": "reporte-",
       "suffix": "user-name",
-      "category": "",
+      "category": "1575229998908969103",
       "topic": "Reporte enviado al equipo de MystiCa."
     },
     "dmMessage": {
@@ -545,7 +545,7 @@
     "channel": {
       "prefix": "alianza-",
       "suffix": "user-name",
-      "category": "",
+      "category": "1575230309014831297",
       "topic": "Propuesta de alianza con MystiCa."
     },
     "dmMessage": {
