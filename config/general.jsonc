@@ -3,7 +3,7 @@
     "_CONFIG_VERSION":"open-ticket-v4.2.3",
 
     "token":"INSERT_BOT_TOKEN",
-    "tokenFromENV":false,
+    "tokenFromENV":"true",
 
     "mainColor":"#D4AF37",
     "language":"spanish",
